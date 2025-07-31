@@ -1,6 +1,6 @@
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
-  tags = { Name = "MyVPC" }
+  tags = { Name = "${var.name_prefix}-MyVPC" }
 }
 
 resource "aws_internet_gateway" "gw" {
@@ -12,7 +12,7 @@ resource "aws_subnet" "public" {
   cidr_block              = var.public_cidr
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
-  tags = { Name = "PublicSubnet" }
+  tags = { Name = "${var.name_prefix}-PublicSubnet" }
 }
 
 resource "aws_route_table" "public" {
@@ -31,7 +31,7 @@ resource "aws_route_table_association" "public_association" {
 }
 
 resource "aws_security_group" "ssh_sec" {
-  name        = "allow_ssh"
+  name        = "${var.name_prefix}-allow-ssh"
   description = "Allow SSH inbound"
   vpc_id      = aws_vpc.main.id
 

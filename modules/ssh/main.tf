@@ -10,6 +10,6 @@ resource "aws_key_pair" "luffy" {
 
 resource "local_file" "private_key" {
   content         = tls_private_key.ssh.private_key_pem
-  filename        = "mykey.pem"
+  filename        = "${var.key_name}.pem"
   file_permission = "0400"
 }

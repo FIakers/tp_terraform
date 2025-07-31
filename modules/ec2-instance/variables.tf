@@ -8,3 +8,7 @@ variable "instance_name" {
   type        = string
   default     = "TF-Instance"
 }
+variable "workspace" {
+  description = "Terraform workspace name"
+  type        = string
+}

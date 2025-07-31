@@ -6,6 +6,7 @@ resource "aws_instance" "luffy" {
   key_name               = var.key_name
 
   tags = {
-    Name = var.instance_name
+    Name      = var.instance_name
+    Workspace = var.workspace
   }
 }
