@@ -3,7 +3,7 @@ resource "tls_private_key" "ssh" {
   rsa_bits  = 4096
 }
 
-resource "aws_key_pair" "this" {
+resource "aws_key_pair" "luffy" {
   key_name   = var.key_name
   public_key = tls_private_key.ssh.public_key_openssh
 }
