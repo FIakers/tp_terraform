@@ -2,10 +2,7 @@ output "instance_public_ips" {
   value = { for k, v in module.ec2_instance : k => v.public_ip }
   description = "Public IP addresses of all EC2 instances"
 }
-output "ssh_private_key_pem" {
-  value     = module.ssh.private_key_pem
-  sensitive = true
-}
+
 output "ssh_connection_commands" {
   value = { for k, v in module.ec2_instance : k => "ssh -i mykey.pem ec2-user@${v.public_ip}" }
   description = "SSH commands for all EC2 instances"
