@@ -10,10 +10,13 @@ module "vpc" {
 }
 
 module "ec2_instance" {
+  for_each = toset([for i in range(var.instance_count) : tostring(i)])
+  
   source         = "./modules/ec2-instance"
   ami_id         = var.ami_id
   instance_type  = var.instance_type
   subnet_id      = module.vpc.public_subnet_id
   key_name       = module.ssh.key_name
   security_group = module.vpc.security_group_id
+  instance_name  = "TF-Instance-${each.key}"
 }

@@ -6,6 +6,6 @@ resource "aws_instance" "this" {
   key_name               = var.key_name
 
   tags = {
-    Name = "TF-Instance"
+    Name = var.instance_name
   }
 }
