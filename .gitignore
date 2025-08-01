@@ -36,5 +36,4 @@ override.tf.json
 terraform.rc
 mykey.pem
 .terraform.lock.hcl
-dev-key_tf.pem
-prod-key_tf.pem
+*.pem
